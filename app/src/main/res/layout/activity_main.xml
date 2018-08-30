@@ -37,7 +37,7 @@
         android:inputType="textPersonName"
         android:text="子機２"
         app:layout_constraintEnd_toStartOf="@+id/btn2"
-        app:layout_constraintTop_toBottomOf="@+id/editText2" />
+        app:layout_constraintTop_toBottomOf="@+id/etxt1" />
 
     <Button
         android:id="@+id/btn1"
@@ -51,7 +51,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/etxt1"
         android:layout_width="228dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="75dp"
@@ -71,7 +71,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="84dp"
         android:checked="true"
-        app:layout_constraintEnd_toStartOf="@+id/editText2"
+        app:layout_constraintEnd_toStartOf="@+id/etxt1"
         app:layout_constraintHorizontal_bias="0.47"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
