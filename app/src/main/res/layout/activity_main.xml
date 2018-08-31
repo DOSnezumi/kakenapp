@@ -7,7 +7,7 @@
     tools:context="com.example.nezumi.kakenapp3.MainActivity">
 
     <EditText
-        android:id="@+id/editText7"
+        android:id="@+id/etxt4"
         android:layout_width="228dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
@@ -15,10 +15,10 @@
         android:inputType="textPersonName"
         android:text="子機４"
         app:layout_constraintEnd_toStartOf="@+id/btn4"
-        app:layout_constraintTop_toBottomOf="@+id/editText6" />
+        app:layout_constraintTop_toBottomOf="@+id/etxt3" />
 
     <EditText
-        android:id="@+id/editText6"
+        android:id="@+id/etxt3"
         android:layout_width="228dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
@@ -26,10 +26,10 @@
         android:inputType="textPersonName"
         android:text="子機３"
         app:layout_constraintEnd_toStartOf="@+id/btn3"
-        app:layout_constraintTop_toBottomOf="@+id/editText5" />
+        app:layout_constraintTop_toBottomOf="@+id/etxt2" />
 
     <EditText
-        android:id="@+id/editText5"
+        android:id="@+id/etxt2"
         android:layout_width="228dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
@@ -96,7 +96,7 @@
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="45dp"
-        app:layout_constraintEnd_toStartOf="@+id/editText5"
+        app:layout_constraintEnd_toStartOf="@+id/etxt2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/sw1"
         tools:checked="true" />
@@ -122,7 +122,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="44dp"
         android:checked="true"
-        app:layout_constraintEnd_toStartOf="@+id/editText6"
+        app:layout_constraintEnd_toStartOf="@+id/etxt3"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/sw2" />
 
@@ -147,7 +147,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="40dp"
         android:checked="true"
-        app:layout_constraintEnd_toStartOf="@+id/editText7"
+        app:layout_constraintEnd_toStartOf="@+id/etxt4"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/sw3" />
 

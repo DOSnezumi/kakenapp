@@ -14,6 +14,8 @@ import android.renderscript.Sampler
 import android.widget.EditText
 import com.google.firebase.database.*
 import android.support.v4.app.NotificationManagerCompat
+import android.text.SpannableStringBuilder
+import android.R.id.edit
 
 
 
@@ -35,8 +37,10 @@ class MainActivity : AppCompatActivity() {
         val sw3 = findViewById<Switch>(R.id.sw3)
         val sw4 = findViewById<Switch>(R.id.sw4)
         val etxt1 = findViewById<EditText>(R.id.etxt1)
+        val etxt2 = findViewById<EditText>(R.id.etxt2)
+        val etxt3 = findViewById<EditText>(R.id.etxt3)
+        val etxt4 = findViewById<EditText>(R.id.etxt4)
         val kakenapp2 = FirebaseDatabase.getInstance()
-        val kaken = kakenapp2.getReference("kakenapp2")
         val ko1 = kakenapp2.getReference("ko1")
         val ko2 = kakenapp2.getReference("ko2")
         val ko3 = kakenapp2.getReference("ko3")
@@ -47,45 +51,84 @@ class MainActivity : AppCompatActivity() {
         val kt4 = kakenapp2.getReference("kt4")
         val swlist = listOf<Switch>(sw1,sw2,sw3,sw4)
         val kolist = listOf(ko1,ko2,ko3,ko4)
-        val tuti = Notification.Builder(getApplicationContext())
-                .setSmallIcon(R.drawable.notification_icon_background)
-                .setContentTitle("忘れ物です！")
-                .setContentText("子機１を忘れています！")
-                .build()
-
-
-        /*kaken.addChildEventListener(object : ChildEventListener {
-            override fun onCancelled(p0: DatabaseError?) {
-                text1.text = "yattazeeeeee"
-            }
-
-            override fun onChildMoved(p0: DataSnapshot, p1: String?) {
-            }
-
-            override fun onChildChanged(p0: DataSnapshot, p1: String?) {
-                text1.text = "yattazeeeeee"
-            }
-
-            override fun onChildAdded(p0: DataSnapshot, p1: String?) {
-                text1.text = "yattazeeeeee"
-            }
-
-            override fun onChildRemoved(p0: DataSnapshot) {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-            }
-        })*/
+        var ab1 = 0
+        var ab2 = 0
+        var ab3 = 0
+        var ab4 = 0
         kt1.addValueEventListener(object : ValueEventListener{
             override fun onDataChange(p0: DataSnapshot) {
-                val st = p0.getValue()
-                text1.text = "null"
-                if(st==1){
-                    text1.text ="1"
+                if(ab1>0) {
+                    var tuti1 = Notification.Builder(getApplicationContext())
+                            .setSmallIcon(R.drawable.notification_icon_background)
+                            .setContentTitle("忘れ物です！")
+                            .setContentText("${etxt1.text}を忘れています！")
+                            .setDefaults(Notification.DEFAULT_VIBRATE)
+                            .build()
                     val manager = NotificationManagerCompat.from(applicationContext)
-                    manager.notify(123, tuti)
+                    manager.notify(1, tuti1)
                     kt1.setValue(0)
                 }
-                text1.text ="${st}"
+                ab1++
+            }
+            override fun onCancelled(p0: DatabaseError?) {
+                text1.text = "?yattazeeeeee"
+            }
+        })
 
+        kt2.addValueEventListener(object : ValueEventListener{
+            override fun onDataChange(p0: DataSnapshot) {
+                if(ab2>0) {
+                    var tuti2 = Notification.Builder(getApplicationContext())
+                            .setSmallIcon(R.drawable.notification_icon_background)
+                            .setContentTitle("忘れ物です！")
+                            .setContentText("${etxt2.text}を忘れています！")
+                            .setDefaults(Notification.DEFAULT_VIBRATE)
+                            .build()
+                    val manager = NotificationManagerCompat.from(applicationContext)
+                    manager.notify(2, tuti2)
+                    kt2.setValue(0)
+                }
+                ab2++
+            }
+            override fun onCancelled(p0: DatabaseError?) {
+                text1.text = "?yattazeeeeee"
+            }
+        })
+
+        kt3.addValueEventListener(object : ValueEventListener{
+            override fun onDataChange(p0: DataSnapshot) {
+                if(ab3>0) {
+                    var tuti3 = Notification.Builder(getApplicationContext())
+                            .setSmallIcon(R.drawable.notification_icon_background)
+                            .setContentTitle("忘れ物です！")
+                            .setContentText("${etxt3.text}を忘れています！")
+                            .setDefaults(Notification.DEFAULT_VIBRATE)
+                            .build()
+                    val manager = NotificationManagerCompat.from(applicationContext)
+                    manager.notify(3, tuti3)
+                    kt3.setValue(0)
+                }
+                ab3++
+            }
+            override fun onCancelled(p0: DatabaseError?) {
+                text1.text = "?yattazeeeeee"
+            }
+        })
+
+        kt4.addValueEventListener(object : ValueEventListener{
+            override fun onDataChange(p0: DataSnapshot) {
+                if(ab4>0) {
+                    var tuti4 = Notification.Builder(getApplicationContext())
+                            .setSmallIcon(R.drawable.notification_icon_background)
+                            .setContentTitle("忘れ物です！")
+                            .setContentText("${etxt4.text}を忘れています！")
+                            .setDefaults(Notification.DEFAULT_VIBRATE)
+                            .build()
+                    val manager = NotificationManagerCompat.from(applicationContext)
+                    manager.notify(4, tuti4)
+                    kt4.setValue(0)
+                }
+                ab4++
             }
             override fun onCancelled(p0: DatabaseError?) {
                 text1.text = "?yattazeeeeee"
