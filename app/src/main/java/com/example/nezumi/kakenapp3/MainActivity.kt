@@ -1,32 +1,21 @@
-package com.example.nezumi.kakenapp3
+package com.example.dosnezumi.kakenapp3
 
+import android.app.Activity
 import android.app.Notification
-import android.app.NotificationManager
-import android.content.Context
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.widget.Button
-import android.widget.Switch
-import android.widget.TextView
-import android.content.Intent
-import android.renderscript.Sampler
-import android.widget.EditText
-import com.google.firebase.database.*
 import android.support.v4.app.NotificationManagerCompat
-import android.text.SpannableStringBuilder
-import android.R.id.edit
+import android.widget.Button
+import android.widget.EditText
+import android.widget.Switch
+import android.widget.Toast
+import com.google.firebase.database.*
 
 
-
-
-class MainActivity : AppCompatActivity() {
-    var count = 0
+class MainActivity : Activity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val text1 = findViewById<TextView>(R.id.tk1)
         val btn1 = findViewById<Button>(R.id.btn1)
         val btn2 = findViewById<Button>(R.id.btn2)
         val send = findViewById<Button>(R.id.btn0)
@@ -49,6 +38,7 @@ class MainActivity : AppCompatActivity() {
         val kt2 = kakenapp2.getReference("kt2")
         val kt3 = kakenapp2.getReference("kt3")
         val kt4 = kakenapp2.getReference("kt4")
+        val sd1 = kakenapp2.getReference("sd1")
         val swlist = listOf<Switch>(sw1,sw2,sw3,sw4)
         val kolist = listOf(ko1,ko2,ko3,ko4)
         var ab1 = 0
@@ -58,6 +48,7 @@ class MainActivity : AppCompatActivity() {
         kt1.addValueEventListener(object : ValueEventListener{
             override fun onDataChange(p0: DataSnapshot) {
                 if(ab1>0) {
+                    //テスト機のバージョンが古いので、通知チャンネル？の登録をしませんでした。そのためAPIlevel26以降では通知来ないです...
                     var tuti1 = Notification.Builder(getApplicationContext())
                             .setSmallIcon(R.drawable.notification_icon_background)
                             .setContentTitle("忘れ物です！")
@@ -71,7 +62,6 @@ class MainActivity : AppCompatActivity() {
                 ab1++
             }
             override fun onCancelled(p0: DatabaseError?) {
-                text1.text = "?yattazeeeeee"
             }
         })
 
@@ -91,7 +81,6 @@ class MainActivity : AppCompatActivity() {
                 ab2++
             }
             override fun onCancelled(p0: DatabaseError?) {
-                text1.text = "?yattazeeeeee"
             }
         })
 
@@ -111,7 +100,6 @@ class MainActivity : AppCompatActivity() {
                 ab3++
             }
             override fun onCancelled(p0: DatabaseError?) {
-                text1.text = "?yattazeeeeee"
             }
         })
 
@@ -131,21 +119,15 @@ class MainActivity : AppCompatActivity() {
                 ab4++
             }
             override fun onCancelled(p0: DatabaseError?) {
-                text1.text = "?yattazeeeeee"
             }
         })
 
         btn1.setOnClickListener{ v ->
-            count++
-            text1.text = "${count}"
+            sd1.setValue(1)
         }
         btn2.setOnClickListener{v ->
-            count--
-            text1.text ="${count}"
         }
         btn3.setOnClickListener{v ->
-            count = count + 10
-            text1.text ="${count}"
         }
 
         send.setOnClickListener{ v -> //予約のプログラム
@@ -155,6 +137,7 @@ class MainActivity : AppCompatActivity() {
                     kolist[a].setValue(1)
                 }
             }
+            Toast.makeText(applicationContext, "予約しました", Toast.LENGTH_LONG).show()
         }
     }
 }

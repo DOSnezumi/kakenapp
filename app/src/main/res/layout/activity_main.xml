@@ -4,155 +4,168 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.nezumi.kakenapp3.MainActivity">
+    android:background="@drawable/appback"
+    tools:context="com.example.dosnezumi.kakenapp3.MainActivity">
 
     <EditText
         android:id="@+id/etxt4"
         android:layout_width="228dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginLeft="28dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="26dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="子機４"
-        app:layout_constraintEnd_toStartOf="@+id/btn4"
+        app:layout_constraintStart_toEndOf="@+id/sw4"
         app:layout_constraintTop_toBottomOf="@+id/etxt3" />
 
     <EditText
         android:id="@+id/etxt3"
         android:layout_width="228dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
+        android:layout_marginLeft="28dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="26dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="子機３"
-        app:layout_constraintEnd_toStartOf="@+id/btn3"
+        app:layout_constraintStart_toEndOf="@+id/sw3"
         app:layout_constraintTop_toBottomOf="@+id/etxt2" />
 
     <EditText
         android:id="@+id/etxt2"
         android:layout_width="228dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
+        android:layout_marginLeft="28dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="26dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="子機２"
-        app:layout_constraintEnd_toStartOf="@+id/btn2"
+        app:layout_constraintStart_toEndOf="@+id/sw2"
         app:layout_constraintTop_toBottomOf="@+id/etxt1" />
 
     <Button
         android:id="@+id/btn1"
+        style="@android:style/Widget.Holo.Light.Button.Toggle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginTop="75dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="90dp"
         android:text="鳴らす"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/etxt1"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/etxt1"
         android:layout_width="228dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="75dp"
+        android:layout_marginLeft="28dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="92dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="子機１"
-        app:layout_constraintEnd_toStartOf="@+id/btn1"
+        app:layout_constraintStart_toEndOf="@+id/sw1"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Switch
         android:id="@+id/sw1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="84dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="101dp"
         android:checked="true"
-        app:layout_constraintEnd_toStartOf="@+id/etxt1"
-        app:layout_constraintHorizontal_bias="0.47"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/btn2"
+        style="@android:style/Widget.Holo.Light.Button.Toggle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginTop="22dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
         android:text="鳴らす"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/etxt2"
         app:layout_constraintTop_toBottomOf="@+id/btn1" />
 
     <Switch
         android:id="@+id/sw2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginStart="8dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="45dp"
-        app:layout_constraintEnd_toStartOf="@+id/etxt2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/sw1"
         tools:checked="true" />
 
     <Button
         android:id="@+id/btn3"
+        style="@android:style/Widget.Holo.Light.Button.Toggle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginTop="22dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
         android:text="鳴らす"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/etxt3"
         app:layout_constraintTop_toBottomOf="@+id/btn2" />
 
     <Switch
         android:id="@+id/sw3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="44dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="45dp"
         android:checked="true"
-        app:layout_constraintEnd_toStartOf="@+id/etxt3"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/sw2" />
 
     <Button
         android:id="@+id/btn4"
+        style="@android:style/Widget.Holo.Light.Button.Toggle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="24dp"
         android:text="鳴らす"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/etxt4"
         app:layout_constraintTop_toBottomOf="@+id/btn3" />
 
     <Switch
         android:id="@+id/sw4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="45dp"
         android:checked="true"
-        app:layout_constraintEnd_toStartOf="@+id/etxt4"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/sw3" />
 
     <Button
         android:id="@+id/btn0"
+        style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="135dp"
         android:layout_height="72dp"
         android:layout_marginBottom="8dp"
@@ -162,7 +175,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="予約"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textAppearance="@style/TextAppearance.AppCompat.Inverse"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
@@ -170,20 +183,5 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.919"
         tools:textSize="30sp" />
-
-    <TextView
-        android:id="@+id/tk1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="68dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginStart="8dp"
-        android:text="0"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.54"
-        app:layout_constraintStart_toEndOf="@+id/btn0" />
 
 </android.support.constraint.ConstraintLayout>

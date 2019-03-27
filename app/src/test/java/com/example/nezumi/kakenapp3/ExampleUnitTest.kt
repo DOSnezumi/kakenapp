@@ -1,4 +1,4 @@
-package com.example.nezumi.kakenapp3
+package com.example.dosnezumi.kakenapp3
 
 import org.junit.Test
 
