@@ -1,0 +1,98 @@
+#include<ESP8266WiFi.h>
+#include<FirebaseArduino.h>
+#include<SoftwareSerial.h>
+
+#define FIREBASE_HOST "kakenapp2.firebaseio.com"
+#define FIREBASE_AUTH "Xnw8SUyqCGTgGJyFUid7UTn7wT1lD4fiW6BOgIup"
+#define WIFI_SSID   "oho"
+#define WIFI_PASSWORD   "29292929"
+#define ko 1      //子機の数12
+
+int fromArd, flag = 0;  //fromArd = fromArduino, fromFB = fromFirebase
+int kokiInfo[ko];   //kokiInfo[]=子機の情報が入る(0 or 1)
+int i;
+
+void setup(){
+
+  // ピン設定
+  pinMode(0, OUTPUT);
+  digitalWrite(0, LOW);
+  pinMode(2, OUTPUT);
+  digitalWrite(2, LOW);
+  pinMode(4, OUTPUT);
+  digitalWrite(4, LOW);
+  pinMode(5, OUTPUT);
+  digitalWrite(5, LOW);
+  pinMode(12, OUTPUT);  //ard2
+  digitalWrite(12, HIGH);
+  pinMode(13, INPUT); //ard3
+  pinMode(16, OUTPUT);
+  digitalWrite(16, LOW);
+
+  //シリアルポートスタート!
+  Serial.begin(9600);
+
+  // WiFi接続
+  int count = 0;
+  WiFi.mode(WIFI_STA);
+  delay(300);
+  int status = WL_IDLE_STATUS;
+  // status = WiFi.begin(ssid, password); // 間違って書き込まなかったコード
+
+  while (1) {
+    
+    status = WiFi.status();
+    if(status == WL_CONNECTED) break; // 本来なら最初にここでbreakされることはあり得ない・・・はず？
+    if(status == WL_NO_SHIELD) Serial.println("WL_NO_SHIELD");
+    if(status == WL_IDLE_STATUS) Serial.println("WL_IDLE_STATUS");
+    if(status == WL_NO_SSID_AVAIL) Serial.println("WL_NO_SSID_AVAIL");
+    if(status == WL_SCAN_COMPLETED) Serial.println("WL_SCAN_COMPLETED");
+    if(status == WL_CONNECT_FAILED) Serial.println("WL_CONNECT_FAILED");
+    if(status == WL_CONNECTION_LOST) Serial.println("WL_CONNECTION_LOST");
+    if(status == WL_DISCONNECTED) { Serial.println("WL_DISCONNECTED"); }
+    delay(500);
+    
+    if(count > 50) {
+      WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
+      count = 0;
+      continue;
+    }
+    
+    count++;
+    
+  }
+
+  digitalWrite(16, HIGH);   //WiFi接続確認用
+
+  //Firebaseスタート!
+  Firebase.begin(FIREBASE_HOST);
+
+  //接続完了したぜ!
+  Serial.println("conected");
+  delay(100);
+    
+}
+
+
+void loop(){
+
+    //Firebaseから子機の情報を取ってくる
+    kokiInfo[0] = Firebase.getInt("ko1");
+    Serial.println(kokiInfo[0]);
+    Serial.println("...");
+
+    //Arduinoに戻す
+    if(kokiInfo[0] == 1){
+      digitalWrite(12, LOW);
+
+    //取ってくる終わり
+
+  //通知のためにFirebaseに書きこむ
+  
+    if((i = digitalRead(13)) == HIGH){
+      Firebase.setInt("kt1", 114514);
+    }
+
+  }
+
+}
