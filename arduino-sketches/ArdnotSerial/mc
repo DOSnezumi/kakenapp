@@ -1,0 +1,116 @@
+// https://scrapbox.io/kadaikeUnkyuu/
+
+#define boundary 0  //アナログ入力における電圧の境界
+#define ko 1
+
+int i,j, tag, flag = 0;
+float v_bef = 0, v_aft = 0;
+
+int searchTag(void);
+
+void setup() {
+
+  //ボーレートの設定をしてね。詳細は http://discexuno.wp.xdomain.jp/arduino/arduino_and_esp8266_1/
+
+  pinMode(2, INPUT);  //esp12
+  for(i=4;i<=9;i++){
+    pinMode(i, OUTPUT);   // 2,4~9ピンをOUTPUTに設定
+  }
+
+  pinMode(3, OUTPUT); //esp13
+  for(i=10;i<=15;i++){    // 3,10~13,A0(D14),A1(D15)をINPUTに設定
+    pinMode(i, INPUT);
+  }
+
+  pinMode(17, INPUT);     //17=A03→スイッチ用
+
+  for(i=4;i<=9;i++){
+    digitalWrite(i, HIGH);
+  }
+
+  Serial.begin(9600);
+  
+}
+
+void loop() {
+
+  int fromESP[ko],kensaku,val;
+  
+  delay(1000);
+
+    fromESP[0] = digitalRead(2); //こっから子機探す
+    Serial.println(fromESP[0]);
+ 
+    delay(3000);
+    
+    //for(i=0;i<ko;i++){
+      if(fromESP[0] == HIGH){
+        
+        j = analogRead(2);          //今の受信機の値を読む
+        v_bef = j * 5.0 / 1023.0;       //arduinoの読んだ値を電圧にかえる   
+        digitalWrite(7, LOW);           //kokihassin
+        digitalWrite(5, LOW);
+        delay(240);    
+        j = analogRead(2);              //子機を発振させた後の受信機の値を読む
+        digitalWrite(7, HIGH);
+        digitalWrite(5, HIGH);          //kokomade
+        v_aft = j * 5.0 / 1023.0;
+        v_bef = v_bef + 0.3;
+
+        Serial.println(v_bef);
+        Serial.println(v_aft);
+          
+        if(v_aft < v_bef){              //計測後が計測前より0.3Vhikuかったら
+          digitalWrite(3, LOW);     //通知を送らせる用の20
+          delay(2000);
+          digitalWrite(3, HIGH);
+          delay(2000);
+        }
+      }
+    }
+    //flag = 0;
+  //}
+  
+//}
+
+int searchTag(){
+
+  int val = 0, report = 0;
+
+  digitalWrite(7, HIGH);
+  digitalWrite(9, HIGH);
+  digitalWrite(5, HIGH);
+  digitalWrite(6, HIGH);
+  //101011(7,8,9,4,5,6)でタグを探す
+
+  while(val > boundary){
+    
+    val = analogRead(3); //A3から来た値をvalに代入
+    
+    if(val > boundary){
+      report = 1;
+      return(report);
+    }
+      
+  }
+  
+}    //Firebaseから子機の情報を取ってくる
+    kokiInfo[0] = Firebase.getInt("ko1");
+    Serial.println(kokiInfo[0]);
+    Serial.println("...");
+
+    //Arduinoに戻す
+    if(kokiInfo[0] == 1){
+      digitalWrite(12, LOW);
+
+    //取ってくる終わり
+
+  //通知のためにFirebaseに書きこむ
+  
+    if((i = digitalRead(13)) == HIGH){
+      Firebase.setInt("kt1", 114514);
+    }
+
+  }
+
+}
